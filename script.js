@@ -1,9 +1,10 @@
 const base_url = "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json";
 const dropdown = document.querySelectorAll(".dropdown select");
-const fromCurr = document.querySelector("form select");
+const fromCurr = document.querySelector(".from select");
 const toCurr = document.querySelector(".to select");
 const btn = document.querySelector("form button");
 const msg = document.querySelector(".msg");
+const icon = document.querySelector("i");
 for(let select of dropdown){
     for(const country in countryList){
         let newOption = document.createElement("option");
@@ -53,4 +54,10 @@ window.addEventListener("load",()=>{
     updateCurrencyExchange();
     updateFlag(fromCurr);
     updateFlag(toCurr);
+})
+icon.addEventListener("click",()=>{
+    [toCurr.value,fromCurr.value] = [fromCurr.value,toCurr.value];
+    updateFlag(toCurr);
+    updateFlag(fromCurr);
+    updateCurrencyExchange();
 })
